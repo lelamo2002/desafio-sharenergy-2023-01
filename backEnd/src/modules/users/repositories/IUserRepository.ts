@@ -13,6 +13,10 @@ export interface IUserRepository {
   findByUsername(username: string): Promise<IUser | null>;
   findByName(name: string): Promise<IUser[]>;
 
+  updateUser(email:string,data: ICreateUserDTO) : Promise<IUser | null>;
+  deleteUser(email:string) : Promise<IUser | null>;
+
   list(): Promise<IUser[]>;
+
 
 }

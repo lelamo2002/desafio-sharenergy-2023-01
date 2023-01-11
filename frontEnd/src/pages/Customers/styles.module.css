@@ -1,0 +1,31 @@
+.main {
+  padding-top: 20px;
+}
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+form * {
+  margin: 10px;
+}
+
+.MuiOutlinedInput-input {
+  padding: 10px;
+}
+
+.MuiFormLabel-root {
+  font-size: 18px;
+}
+
+.MuiButton-contained {
+  background-color: #00a2a2;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.MuiButton-contained:hover {
+  background-color: #d7de27;
+}

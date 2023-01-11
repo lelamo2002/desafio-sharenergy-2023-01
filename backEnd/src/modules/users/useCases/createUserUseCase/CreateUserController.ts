@@ -9,10 +9,10 @@ class CreateUserController {
 
   async handle(request: Request, response: Response) {
 
-    const { email, name, username, age, picture, password } = request.body;
+    const { email, name, phone, adress, cpf } = request.body;
     const createUserUseCase = container.resolve(CreateUserUseCase);
 
-    await createUserUseCase.execute({ email, name, username, age, picture, password });
+    await createUserUseCase.execute({ email, name, phone, adress, cpf });
 
     return response.status(201).json({ message: "User created!" });
 

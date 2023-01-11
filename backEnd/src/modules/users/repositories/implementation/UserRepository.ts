@@ -9,7 +9,7 @@ class UserRepository implements IUserRepository {
 
   async create(data: ICreateUserDTO): Promise<IUser> {
 
-    const user = User.create(data);
+    const user = await User.create(data);
 
     return user;
   }
@@ -33,7 +33,7 @@ class UserRepository implements IUserRepository {
 
     return user;
   }
-  async findByNames(name: string): Promise<IUser[]> {
+  async findByName(name: string): Promise<IUser[]> {
 
     const users = await User.find({ name: { $regex: name, $options: 'i' } })
 
@@ -44,6 +44,25 @@ class UserRepository implements IUserRepository {
     const users = await User.find();
 
     return users;
+  }
+
+  async updateUser(email:string, data: ICreateUserDTO): Promise<IUser | null> {
+      
+      const user = await User.findOneAndUpdate({
+        email: email,
+      }, data
+      )
+
+      return user;
+  }
+
+  async deleteUser(email:string): Promise<IUser | null> {
+        
+      const user = await User.findOneAndDelete({
+        email: email,
+      })
+
+      return user;
   }
 
 }

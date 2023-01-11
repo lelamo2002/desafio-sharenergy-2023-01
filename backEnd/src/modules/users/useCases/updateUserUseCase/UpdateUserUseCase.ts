@@ -5,14 +5,14 @@ import { IUserRepository } from "../../repositories/IUserRepository";
 import { IUser } from "../../infra/models/User";
 
 @injectable()
-class CreateUserUseCase {
+class UpdateUserUseCase {
 
   constructor(
     @inject("UserRepository")
     private userRepository: IUserRepository
   ) { }
 
-  async execute({ email, name, phone, adress, cpf }: ICreateUserDTO): Promise<IUser> {
+  async execute(email:string, { email: newEmail, name, phone, adress, cpf }: ICreateUserDTO): Promise<IUser | null> {
 
     const userAlreadyExists = await this.userRepository.findByEmail(email);
 
@@ -22,11 +22,11 @@ class CreateUserUseCase {
       throw new AppError("User already exists!");
     }
 
-    const user = await this.userRepository.create({ email, name, phone, adress, cpf });
+    const user = await this.userRepository.updateUser(email, { email:newEmail, name, phone, adress, cpf });
 
     return user;
   }
 
 }
 
-export { CreateUserUseCase };
+export { UpdateUserUseCase };

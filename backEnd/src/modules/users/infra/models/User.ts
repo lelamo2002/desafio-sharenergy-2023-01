@@ -4,20 +4,18 @@ export interface IUser {
   _id: string;
   email: string;
   name: string;
-  username: string;
-  age: number;
-  picture: string;
-  password: string;
+  phone: string;
+  adress: string;
+  cpf: string;
 }
 
 
 const userSchema = new Schema<IUser>({
   email: { type: String, required: true },
   name: { type: String, required: true },
-  username: { type: String, required: true },
-  age: { type: Number, required: true },
-  picture: { type: String, required: true },
-  password: { type: String, required: true },
+  phone: { type: String, required: true },
+  adress: { type: String, required: true },
+  cpf: { type: String, required: true },
 });
 
 

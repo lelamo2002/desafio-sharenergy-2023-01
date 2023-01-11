@@ -4,15 +4,15 @@ import { IUserRepository } from "../../repositories/IUserRepository";
 
 
 @injectable()
-class SearchUserByNameUseCase {
+class SearchUserByEmailUseCase {
   constructor(@inject("UserRepository") private userRepository: IUserRepository) { }
 
-  async execute(name: string): Promise<IUser[]> {
+  async execute(email: string): Promise<IUser| null> {
 
-    const user = await this.userRepository.findByName(name);
+    const user = await this.userRepository.findByEmail(email);
 
     return user;
   }
 }
 
-export { SearchUserByNameUseCase };
+export { SearchUserByEmailUseCase };
