@@ -12,10 +12,24 @@ Este é o repositório com a solução para o desafio proposto pela SHARENERGY. 
 
 - A página inicial da aplicação é uma `Login Page`, onde é possível realizar o login utilizando o username `desafiosharenergy` e password `sh@r3n3rgy`. Além disso, é possível utilizar o recurso `remember me` para realizar logins automáticos, sem a necessidade de digitar username e password após o primeiro acesso.
 
+![image](https://user-images.githubusercontent.com/56228340/211700212-829b84ca-c71d-4ea9-9027-b8eec81b2fea.png)
+
+
 - Após o login, a página principal contém uma listagem de usuários gerada a partir da api [Random User Generator](https://randomuser.me/), a lista contém a foto do usuário, nome completo, email, username e idade. Os resultados são paginados, com 9 resultados por página e inclui uma busca para buscar usuários por nome, email ou username.
+
+![image](https://i.imgur.com/aRbHTOn.gif)
+
+
 - Em uma segunda página, é possível selecionar um status code http e, após a seleção, é retornada uma imagem da api [HTTP Cat](https://http.cat/) relacionada ao status escolhido, caso não exista tal imagem, é retornada uma imagem do codigo 404 not found.
+
+![image](https://i.imgur.com/oicRKVw.gif)
 - Em uma terceira página, há um botão de refresh que, ao ser clicado, retorna uma imagem aleatória da api [Random Dog](https://random.dog/).
+
+![image](https://i.imgur.com/SLli59D.gif)
+
 - Em uma quarta página, há uma lista de clientes, através da qual é possível cadastrar novos clientes, visualizar informações de um cliente específico e deletar clientes. O cadastro possui nome, email, telefone, endereço e cpf.
+
+![image](https://i.imgur.com/mm9uuGh.gif)
 
 ## Rodando a aplicação
 
@@ -29,7 +43,7 @@ Observação: Normalmente, seria necessário configurar o arquivo `.env` para de
 
 #### Instruções
 
-1. Inicie o backend com o comando `docker-compose up`
+1. Inicie o backend com o comando `docker compose up`
 
 ### Frontend
 
