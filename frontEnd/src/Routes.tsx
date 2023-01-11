@@ -9,8 +9,9 @@ function AppRoutes() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/customers" element={<Customers />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/dogs" element={<Dogs />} />
         <Route path="/cats" element={<CatErrors />} />
         <Route path="/users" element={<RandomUsers />} />
