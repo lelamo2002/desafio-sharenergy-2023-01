@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src='main.js'></script>
+</head>
+
+<body>
+
+
+  <div id="dog-image"></div>
+
+
+
+  <script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://random.dog/woof.json', true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const imageUrl = JSON.parse(xhr.responseText).url;
+        const style = 'width: 50%;width: 25%; object-fit: contain;';
+        if (imageUrl.endsWith('.mp4')) {
+          // It's a video
+          var videoElement = document.createElement('video');
+          videoElement.src = imageUrl;
+          videoElement.controls = false;
+          videoElement.autoplay = true;
+          videoElement.loop = true;
+          videoElement.muted = true;
+          videoElement.style = style;
+          //append video to dog-image div
+          document.getElementById('dog-image').appendChild(videoElement);
+
+        } else {
+          // It's an image
+          var imgElement = document.createElement('img');
+          imgElement.src = imageUrl;
+          imgElement.alt = 'Random dog image';
+          document.getElementById('dog-image').appendChild(imgElement);
+          imgElement.style = style;
+          // document.body.appendChild(imgElement);
+        }
+      } else {
+        console.log('Request failed.  Returned status of ' + xhr.status);
+      }
+    };
+    xhr.send();
+  </script>
+
+</body>
+
+</html>

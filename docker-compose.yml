@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+
+  app:
+    build: ./backEnd
+    container_name: shareEnergy
+    ports:
+      - 3000:3000
+      - 5555:5555
+    expose:
+      - 3000:3000
+      - 5555:5555
+    links:
+      - mongo
+    volumes:
+      - ./backEnd:/usr/app
+    depends_on:
+      - mongo
+    networks:
+      - mongo-network
+
+  mongo:
+    image: mongo
+    container_name: mongoShareEnergy
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: shareEnergy
+      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_DATABASE: develop
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge
